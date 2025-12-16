@@ -1,0 +1,73 @@
+<h1>Form :</h1>
+<input type="text" placeholder="Enter name :" id="nameinp"><br>
+<input type="number" placeholder="Enter age :" id="ageinp"><br>
+<input type="email" placeholder="Enter email :" id="emailinp"><br>
+<input type="Gender" placeholder="Enter Gender :" id="genderinp"><br>
+<button id="btn">Save</button>
+
+
+<h1>Saved Students :</h1>
+<table id="table" border="2">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Action</th>
+    </tr>
+</table>
+
+<script>
+var nameinp = document.getElementById("nameinp")
+var ageinp = document.getElementById("ageinp")
+var emailinp = document.getElementById("emailinp")
+var genderinp = document.getElementById("genderinp")
+var btn = document.getElementById("btn")
+var table= document.getElementById("table")
+
+btn.addEventListener("click",function(){
+    if(nameinp.value.trim()===""){
+    alert("Enter name")
+    return
+}
+if(ageinp.value.trim()===""){
+    alert("Enter age")
+    return
+}
+if(emailinp.value.trim()===""||!emailinp.checkValidity()){
+    alert("Enter valid email")
+    return
+}
+if(genderinp.value.trim()===""){
+    alert("Enter gender")
+    return
+}
+
+
+var row = table.insertRow(-1)
+var cell1 = row.insertCell(0)
+var cell2 = row.insertCell(1)
+var cell3 = row.insertCell(2)
+var cell4 = row.insertCell(3)
+var cell5 = row.insertCell(4)
+
+
+cell1.textContent = nameinp.value
+cell2.textContent = ageinp.value
+cell3.textContent = emailinp.value
+cell4.textContent = genderinp.value
+cell5.innerHTML = '<button  onclick="clicked(event)">Delete</button>'
+
+nameinp.value=""
+ageinp.value=""
+emailinp.value=""
+genderinp.value=""
+
+
+})
+
+function clicked(event){
+    event.target.closest("tr").remove()
+}
+
+</script>
